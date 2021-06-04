@@ -1,0 +1,22 @@
+import javax.swing.*; //библиотека для JFrame
+
+public class JavaSweeper extends JFrame
+{
+    public static void main(String[] args)
+    {
+        new JavaSweeper(); //создание экземпляра
+    }
+    private JavaSweeper () //"приватный" конструктор
+    {
+        initFrame(); //вызов инициализаций фрэйма
+    }
+    private void initFrame () //функция
+    {
+        pack(); //функция, изменяющая размер формы
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //закрытие программы по умолчанию
+        setTitle("Java Sweeper"); //установка заголовка
+        setLocationRelativeTo(null); //установка окошка по центру
+        setResizable(false); //нельзя изменять размер окна
+        setVisible(true); // чтобы форму было видно
+    }
+}
