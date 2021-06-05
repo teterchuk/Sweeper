@@ -1,0 +1,31 @@
+package sweeper;
+
+import java.util.SplittableRandom;
+
+class Bomb
+{
+    private Matrix bombMap;
+    private int totalBombs;
+
+    Bomb (int totalBombs) //конструктор
+    {
+        this.totalBombs = totalBombs;
+    }
+
+    void start ()
+    {
+        bombMap = new Matrix(Box.ZERO);
+        placeBomb();
+    }
+
+    Box get (Cord cord)
+    {
+        return bombMap.get(cord);
+    }
+
+    private void placeBomb() //функция размещения одной бомбы
+    {
+        bombMap.set(new Cord(4,4), Box.BOMB);
+    }
+
+}
