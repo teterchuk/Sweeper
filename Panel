@@ -1,0 +1,33 @@
+import javax.swing.*; //библиотека для JFrame
+import java.awt.*;
+
+public class JavaSweeper extends JFrame
+{
+    private JPanel panel; //добавление панели
+    public static void main(String[] args)
+    {
+        new JavaSweeper(); //создание экземпляра
+    }
+    private JavaSweeper () //"приватный" конструктор
+    {
+        initPanel(); //инициализация панели
+        initFrame(); //вызов инициализаций фрэйма
+    }
+
+    private void initPanel() //метод инициализации панели
+    {
+        panel = new JPanel(); //создаем панель
+        panel.setPreferredSize(new Dimension(500, 500)); //устанавливаем размер
+        add (panel); //добавляяем панель на форму
+    }
+
+    private void initFrame () //функция
+    {
+        pack(); //метод устанавляивает такой минимальный размер контейнера, который достаточек для отображения всех команентов
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //закрытие программы по умолчанию
+        setTitle("Java Sweeper"); //установка заголовка
+        setLocationRelativeTo(null); //установка окошка по центру
+        setResizable(false); //нельзя изменять размер окна
+        setVisible(true); // чтобы форму было видно
+    }
+}
