@@ -1,0 +1,18 @@
+package sweeper;
+
+public class Ranges
+{
+
+    private static Cord size; //координаты размер экрана
+
+    public static void setSize(Cord _size) //функция установки размера (сеттер)
+    {
+        size = _size;
+    }
+
+    public static Cord getSize() //сгенерированный геттер
+    {
+    return size;
+    }
+
+}
