@@ -1,0 +1,62 @@
+import javax.swing.*; //библиотека для JFrame
+import java.awt.*;
+import sweeper.Box;
+import java.util.Locale;
+
+public class JavaSweeper extends JFrame
+{
+    private JPanel panel; //добавление панели
+    private final int COLS = 15; //константа кол-во столбцов
+    private final int ROWS = 1; //строк
+    private final int IMAGE_SIZE = 50; //размер одной картинки 50*50
+    public static void main(String[] args)
+    {
+        new JavaSweeper(); //создание экземпляра
+    }
+    private JavaSweeper () //"приватный" конструктор
+    {
+        setImages();
+        initPanel(); //инициализация панели
+        initFrame(); //вызов инициализаций фрэйма
+    }
+
+    private void initPanel() //метод инициализации панели
+    {
+        panel = new JPanel() //создаем панель
+        {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                for(Box box : Box.values()) //цикл отображения катинок. Из бокса Image
+                g.drawImage((Image)box.Image,
+                        box.ordinal() * IMAGE_SIZE,0,this);
+            }
+        };
+        panel.setPreferredSize(new Dimension(COLS * IMAGE_SIZE, ROWS * IMAGE_SIZE)); //устанавливаем размер
+        add (panel); //добавляяем панель на форму
+    }
+
+    private void initFrame () //функция
+    {
+        pack(); //метод устанавляивает такой минимальный размер контейнера, который достаточек для отображения всех команентов
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //закрытие программы по умолчанию
+        setTitle("Java Sweeper"); //установка заголовка
+        setLocationRelativeTo(null); //установка окошка по центру
+        setResizable(false); //нельзя изменять размер окна
+        setVisible(true); // чтобы форму было видно
+    }
+
+    private void setImages() //функция установки картинок
+    {
+        for(Box box : Box.values()) //цикл, перебирающий все картинки
+            box.Image = getImage(box.name().toLowerCase()); //имена элементов бокса совпадают с картинками
+    }
+
+    private Image getImage (String name) //функция получения картинок
+    {
+        String filename = "img/" + name + ".png"; //имя файла для каждой картинки
+        ImageIcon icon = new ImageIcon(getClass().getResource(filename)); //получаем доступ к файлу
+        return icon.getImage(); //возврат картинки
+    }
+
+}
