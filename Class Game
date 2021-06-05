@@ -1,0 +1,14 @@
+package sweeper;
+
+public class Game
+{
+    public Game (int cols, int rows) //констурктор
+    {
+        Ranges.setSize(new Cord(cols, rows));
+    }
+
+    public Box getBox (Cord cord)
+    {
+        return  Box.values()[(cord.x + cord.y) % Box.values().length];
+    }
+}
