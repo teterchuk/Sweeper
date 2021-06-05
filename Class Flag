@@ -1,0 +1,17 @@
+package sweeper;
+
+class Flag
+{
+    private Matrix flagMap; //матрица флагов
+
+    void start () //запуск
+    {
+        flagMap = new Matrix(Box.CLOSED); //инициализация матрицы на закрытые ячейки
+    }
+
+    Box get (Cord cord) //геттер возвращение координаты
+    {
+        return flagMap.get(cord);
+    }
+
+}
